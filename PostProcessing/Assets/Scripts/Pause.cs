@@ -13,23 +13,32 @@ public class Pause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		if (PauseCheck == false) {
-			Time.timeScale = 1;
-			panel.SetActive (false);
-
-			if (Input.GetButtonDown("Start")) {
-				PauseCheck = true;
-			}
-		}
-		 else {
-			Time.timeScale = 0;
-			panel.SetActive (true);
-
-			if (Input.GetButtonDown ("Start")) { 
-				PauseCheck = false;
-			}
-		}
+        PauseFunction();
 	}
+
+    private void PauseFunction()
+    {
+
+        if (PauseCheck == false)
+        {
+            Time.timeScale = 1;
+            panel.SetActive(false);
+
+            if (Input.GetButtonDown(Tags.xboxStart))
+            {
+                PauseCheck = true;
+            }
+        }
+        else
+        {
+            Time.timeScale = 0;
+            panel.SetActive(true);
+
+            if (Input.GetButtonDown(Tags.xboxStart))
+            {
+                PauseCheck = false;
+            }
+        }
+    }
 }
 

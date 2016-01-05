@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class XboxMovement : MonoBehaviour {
-	
+
 	private Vector3 movementVector;
 	private float movementSpeed = 3;
 	private float jumpPower = 300;
@@ -27,8 +27,8 @@ public class XboxMovement : MonoBehaviour {
 	
 	
 	void Rotate() {
-		float rightX = Input.GetAxis("RightJoystickX");
-        float rightY = Input.GetAxis("RightJoystickY");
+		float rightX = Input.GetAxis(Tags.RightJoystickX);
+        float rightY = Input.GetAxis(Tags.RightJoystickY);
 
             rotationX += rightY * rotationSpeedX;
             rotationY += rightX * rotationSpeedY;
@@ -39,12 +39,12 @@ public class XboxMovement : MonoBehaviour {
             currentRotationY = Mathf.SmoothDamp(rotationY, currentRotationY, ref vRotationY, 0.1f);
 
             rotationObject.transform.rotation = Quaternion.Euler(currentRotationX, currentRotationY, 0);
-            transform.rotation = Quaternion.Euler(0, currentRotationY,0);
+            transform.rotation = Quaternion.Euler(0, currentRotationY, 0);
     }
 
 	void Move(){
-		float forwardY = Input.GetAxis ("LeftJoystickY") * movementSpeed;
-		float forwardX = Input.GetAxis ("LeftJoystickX") * movementSpeed;
+		float forwardY = Input.GetAxis (Tags.LeftJoystickY) * movementSpeed;
+		float forwardX = Input.GetAxis (Tags.LeftJoystickX) * movementSpeed;
 
 		if (forwardY < 0) { 
 			transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * -forwardY, Space.Self);
@@ -61,23 +61,31 @@ public class XboxMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision col) {
-		if (col.gameObject.tag == "ground") {
+		if (col.gameObject.tag == Tags.ground) {
 			isGrounded = true;
 		} 
 	}
+
+    void Jump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(transform.up * jumpPower);
+            isGrounded = false;
+        }
+    }
 	
 	void Update() { 
 
 		Move ();
 		Rotate ();
 
-		if (Input.GetButtonDown ("A") && isGrounded) { 
-			rb.AddForce(transform.up * jumpPower);
-			isGrounded = false;
+		if (Input.GetButtonDown (Tags.xboxA)) {
+            Jump();
 		}
 			
-		if (Input.GetButtonDown ("B")) { 
-			Application.LoadLevel("xboxtest");
+		if (Input.GetButtonDown (Tags.xboxB)) { 
+			Application.LoadLevel(Tags.mainLevel);
 		}
 	}
 }
