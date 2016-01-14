@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class XboxMovement : MonoBehaviour {
 
+    private EnemyFollow enemyFollow;
+    Text text;
+
+    [SerializeField]private Text combatText;
+    [SerializeField]private Transform enemy;
 	private Vector3 movementVector;
 	private float movementSpeed = 3;
 	private float jumpPower = 300;
@@ -17,15 +23,65 @@ public class XboxMovement : MonoBehaviour {
     private float vRotationY;
     private float currentRotationY;
     private float rotationSpeedX = 2f;
+    private bool isFighting = false;
+    private float timeRemaining = 4f;
+    private int yClick = 0;
+    [SerializeField]private int clicksToEscape = 25;
 
-	
-	
-	void Start() { 
-		
+
+
+    void Start() {
+
+        enemyFollow = enemy.GetComponent<EnemyFollow>();
 		rb = GetComponent<Rigidbody>();
-	}
-	
-	
+        text = combatText.GetComponentInChildren<Text>();
+    }
+    
+    IEnumerator WaitForReset(float time)
+    {
+        yield return new WaitForSeconds(time);
+        yClick = 0;
+        timeRemaining = 4;
+        combatText.text = "";
+    }
+
+    void FightEnemy()
+    {
+        if (timeRemaining > 0)
+        {
+            combatText.text = yClick + " / " + clicksToEscape;
+            timeRemaining -= Time.deltaTime;
+            if (Input.GetButtonDown(Tags.xboxY))
+            {
+                if (yClick < clicksToEscape)
+                {
+                    yClick++;
+                }
+            }
+        }
+
+        if(timeRemaining <= 0 && yClick >= clicksToEscape)
+        {
+            isFighting = false;
+            enemyFollow.rotateCam = false;
+            Debug.Log("ggwp");
+            StartCoroutine(WaitForReset(2f));
+        } else if(timeRemaining <= 0 && yClick < clicksToEscape)
+        {
+            Debug.Log("rekt noob");
+        }
+    }
+
+	void CheckIfEnemy()
+    {
+        if (enemyFollow.rotateCam)
+        {
+            isFighting = true;
+            rotationObject.transform.LookAt(enemy);
+            FightEnemy();
+        }
+    }
+
 	void Rotate() {
 		float rightX = Input.GetAxis(Tags.RightJoystickX);
         float rightY = Input.GetAxis(Tags.RightJoystickY);
@@ -68,24 +124,24 @@ public class XboxMovement : MonoBehaviour {
 
     void Jump()
     {
-        if (isGrounded)
+        if (Input.GetButtonDown(Tags.xboxA))
         {
-            rb.AddForce(transform.up * jumpPower);
-            isGrounded = false;
+            if (isGrounded)
+            {
+                rb.AddForce(transform.up * jumpPower);
+                isGrounded = false;
+            }
         }
     }
 	
-	void Update() { 
+	void Update() {
 
-		Move ();
-		Rotate ();
-
-		if (Input.GetButtonDown (Tags.xboxA)) {
+        if (isFighting == false)
+        {
+            Move();
+            Rotate();
             Jump();
-		}
-			
-		if (Input.GetButtonDown (Tags.xboxB)) { 
-			Application.LoadLevel(Tags.mainLevel);
-		}
+        }
+            CheckIfEnemy();
 	}
 }

@@ -16,6 +16,14 @@ public class Pause : MonoBehaviour {
         PauseFunction();
 	}
 
+    void ReturnToMenu()
+    {
+        if (Input.GetButtonDown(Tags.xboxB))
+        {
+            Application.LoadLevel("MainMenu");
+        }
+    }
+
     private void PauseFunction()
     {
 
@@ -33,6 +41,8 @@ public class Pause : MonoBehaviour {
         {
             Time.timeScale = 0;
             panel.SetActive(true);
+
+            ReturnToMenu();
 
             if (Input.GetButtonDown(Tags.xboxStart))
             {
