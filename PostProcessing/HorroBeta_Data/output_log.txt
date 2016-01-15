@@ -1,0 +1,75 @@
+Initialize engine version: 5.1.3f1 (b0a23b31c3d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.195 seconds
+desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\WendyAdmin\Documents\GitHub\Aim3D\PostProcessing\HorroBeta_Data\Managed\System.dll (this message is harmless)
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2a84 -> priority: 1 
+  Thread -> id: 20bc -> priority: 1 
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.306698 ms
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 162.
+Total: 0.268981 ms (FindLiveObjects: 0.023519 ms CreateObjectMapping: 0.041052 ms MarkObjects: 0.186448 ms  DeleteObjects: 0.017105 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.280100 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 195.
+Total: 0.224080 ms (FindLiveObjects: 0.017960 ms CreateObjectMapping: 0.020098 ms MarkObjects: 0.179606 ms  DeleteObjects: 0.005986 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.473390 ms
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 5974.
+Total: 0.462699 ms (FindLiveObjects: 0.212106 ms CreateObjectMapping: 0.020526 ms MarkObjects: 0.202270 ms  DeleteObjects: 0.027368 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at DoorAnimation+<WaitForSound>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.950672 ms
+
+Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 206.
+Total: 0.432765 ms (FindLiveObjects: 0.036776 ms CreateObjectMapping: 0.025230 ms MarkObjects: 0.159507 ms  DeleteObjects: 0.200560 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.466120 ms
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 5976.
+Total: 0.403686 ms (FindLiveObjects: 0.183882 ms CreateObjectMapping: 0.018388 ms MarkObjects: 0.175329 ms  DeleteObjects: 0.025230 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.808270 ms
+
+Unloading 60 unused Assets to reduce memory usage. Loaded Objects now: 169.
+Total: 0.436186 ms (FindLiveObjects: 0.023947 ms CreateObjectMapping: 0.025658 ms MarkObjects: 0.166349 ms  DeleteObjects: 0.219803 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.282238 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 204.
+Total: 0.237336 ms (FindLiveObjects: 0.021809 ms CreateObjectMapping: 0.023092 ms MarkObjects: 0.183027 ms  DeleteObjects: 0.008552 ms)
+

@@ -6,6 +6,7 @@ public class EnemyFollow : MonoBehaviour {
     public Transform target;
     NavMeshAgent agent;
     public bool rotateCam = false;
+    public bool mustFollow = false;
 
     // Use this for initialization
     void Start() {
@@ -15,15 +16,17 @@ public class EnemyFollow : MonoBehaviour {
 
     void SetTarget(Vector3 Target)
     {
+        if (mustFollow) {
         agent.SetDestination(Target);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         SetTarget(target.position);
-        //Debug.Log("remainingDistance = " + agent.remainingDistance);
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance && agent.hasPath)
         {
             rotateCam = true;
         }

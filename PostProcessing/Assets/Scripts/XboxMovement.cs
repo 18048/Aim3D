@@ -27,6 +27,7 @@ public class XboxMovement : MonoBehaviour {
     private float timeRemaining = 4f;
     private int yClick = 0;
     [SerializeField]private int clicksToEscape = 25;
+    private AudioSource source;
 
 
 
@@ -35,6 +36,7 @@ public class XboxMovement : MonoBehaviour {
         enemyFollow = enemy.GetComponent<EnemyFollow>();
 		rb = GetComponent<Rigidbody>();
         text = combatText.GetComponentInChildren<Text>();
+        source = GetComponent<AudioSource>();
     }
     
     IEnumerator WaitForReset(float time)
@@ -64,11 +66,13 @@ public class XboxMovement : MonoBehaviour {
         {
             isFighting = false;
             enemyFollow.rotateCam = false;
-            Debug.Log("ggwp");
             StartCoroutine(WaitForReset(2f));
         } else if(timeRemaining <= 0 && yClick < clicksToEscape)
         {
-            Debug.Log("rekt noob");
+            clicksToEscape = -1; 
+            source.Play();
+            Application.LoadLevel("GameOver");
+
         }
     }
 

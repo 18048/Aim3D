@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class Raycast : MonoBehaviour {
 
+    EnemyFollow enemyFollow;
+    [SerializeField]private Transform enemy;
     Camera camera;
-   // DoorAnimation doorAnim;
     [SerializeField]private Image image;
     [SerializeField]private float range;
     RaycastHit hit;
     private bool seeDoor = false;
-    public bool sesamOpenU = false;
-
 
     // Use this for initialization
     void Start () {
         camera = GetComponentInChildren<Camera>();
+        enemyFollow = enemy.GetComponent<EnemyFollow>();
 	}
 
     void OpenDoor()
@@ -23,9 +23,13 @@ public class Raycast : MonoBehaviour {
         if (Input.GetButtonDown(Tags.xboxX))
         {
             hit.collider.gameObject.GetComponentInParent<DoorAnimation>().OpenTheDoor();
-            // doorAnim.OpenTheDoor();
-            //Debug.Log(doorAnim);
         }
+    }
+
+    IEnumerator WaitForVictory(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Application.LoadLevel("VictoryScreen");
     }
 	
 	// Update is called once per frame
@@ -39,6 +43,14 @@ public class Raycast : MonoBehaviour {
             {
                 seeDoor = true;
                 OpenDoor();
+                if (hit.collider.tag == "EnemyDoor")
+                {
+                    enemyFollow.mustFollow = true;
+                }
+                if(hit.collider.tag == "VictoryDoor")
+                {
+                    StartCoroutine(WaitForVictory(1.75f));
+                }
             }
         }
         else
